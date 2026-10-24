@@ -1,5 +1,10 @@
 # POW-S research architecture
 
+> **Status: candidate design note.** The scope and decisions in
+> [`README.md`](../README.md) remain authoritative. This document does not
+> authorize implementation.
+
+
 This document describes how proof-of-work research is organized. It is a
 research plan, not a description of running software.
 

@@ -1,86 +1,61 @@
 # POW-S
 
-Proof-of-work services research for the Bitcoin Silver ecosystem.
-
-**Status: research scaffold only.** No simulator, market, rental service, or
-production component exists in this repository yet. POW-S is where proof-of-work
-service designs are specified, modeled, and tested before any of them become a
-product repository.
+> **Status: Research / planned — repository and scope only.**
+> No service, API, contract, or implementation exists here. The product scope
+> is unresolved.
 
 ## Purpose
 
-Explore how BTCS proof-of-work capacity can be measured, priced, rented, and
-settled without changing L1 consensus. The immediate output is reproducible
-research: models, simulations, benchmarks, and decision records. A production
-service is a separate decision.
+POW-S is a placeholder product boundary for proof-of-work services research.
+The name does not yet imply a confirmed service, customer, or operating model.
+This repository exists so that research has a separate home and cannot be
+mistaken for a released product.
 
-## Research questions
+POW-S is not a renamed BTCS Mining Pool. The relationship between the two, if
+any, is undecided.
 
-- How should hashrate rental be priced and settled when shares arrive at
-  variable difficulty?
-- Which payout model is fair and auditable for rented capacity?
-- How do luck, variance, and pool fees affect short-window miner returns?
-- What data must a pool expose to make rental accounting verifiable?
-- Which parts can be simulated locally, and which require a live testnet?
-- What are the legal, custody, and market-manipulation risks of a rental
-  marketplace?
+## Questions that must be answered before a design is chosen
 
-## Scope
+1. What concrete proof-of-work service is being offered?
+2. Who is the customer, and what do they receive?
+3. How is work verified, priced, and settled?
+4. What are the custody, fraud, abuse, and legal boundaries?
+5. Does the service use BTCS, another chain, or no chain at all?
+6. What existing implementation, if any, can be reviewed and licensed?
 
-Planned work:
+Until these questions are answered, no API, token, marketplace, or revenue
+model should be documented as planned functionality.
 
-1. **Definitions** — a shared vocabulary for hashrate, difficulty, shares,
-   rounds, luck, and settlement windows.
-2. **Simulation** — deterministic models of share arrival, round variance, and
-   payout outcomes, with seeded fixtures.
-3. **Benchmarks** — reproducible measurements of validation and accounting
-   throughput.
-4. **Design records** — rental, pricing, and payout proposals with explicit
-   assumptions and failure modes.
-5. **Reference implementation** — only after a design is reviewed; kept small
-   and separate from production custody.
+## Explicitly out of scope
 
-## Out of scope
+- Any claim that POW-S is implemented, available, or accepting customers.
+- Real-fund payments, custody, or mining contracts.
+- Copying an upstream implementation without a license and security review.
+- Merging POW-S code into BTCS Core, BTCS L2, or the mining pool by assumption.
 
-- Consensus changes or a new proof-of-work algorithm.
-- Custody, lending, derivatives, or any financial product.
-- A live marketplace, order book, or real-value rental service.
-- Changes to `BTCS-Mining-Pool` without that repository's review.
+## Possible integration points, subject to the design
 
-## Planned components
+- **BTCS Core** — proof-of-work verification and chain data, if relevant.
+- **BTCS Mining Pool** — only if a documented boundary is agreed.
+- **SilverPay** — only if a payment flow is actually designed and approved.
+- **silver-labs-platform** — schemas and client contracts if an API is defined.
 
-| Component | Responsibility |
-| --- | --- |
-| `docs/` | Research notes and decision records |
-| `sim/` | Deterministic share, round, and payout simulations |
-| `bench/` | Throughput and boundary benchmarks |
-| `fixtures/` | Seeded, non-sensitive test data |
+## First milestone
 
-The directory names are proposed. They are not created yet.
+A scope decision record that states the service, customer, verification method,
+payment model, and explicit non-goals. No code before that decision.
 
-## Integration points
+## Repository facts
 
-- [BTCS-Mining-Pool](https://github.com/Silver-Labs-Technology-Development/BTCS-Mining-Pool)
-  — the operator service that would consume a validated design.
-- [btcs-core](https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development)
-  — the authority for difficulty, templates, and blocks.
-- [silver-labs-platform](https://github.com/Silver-Labs-Technology-Development/silver-labs-platform)
-  — shared schemas if research output becomes an API.
+- Local workspace path: `~/Silver-Labs/POW-S`
+- Default branch: `main`
+- Implementation: none
+- Tests run: none (no code)
+- License: no license selected; no reuse rights are granted
+- Visibility: public research repository
 
-## Local development
-
-There is no runnable code yet. Future simulations should run offline with a
-fixed seed and no network access. Any benchmark that needs a node must use a
-disposable regtest instance.
-
-## Safety and release status
-
-This is research, not a product. Nothing here is production-ready or audited.
-Do not present a simulation result as evidence of live profitability, fair
-market value, or network security. Never commit wallet data, keys, `.env`
-files, or miner credentials.
-
-See [`SECURITY.md`](SECURITY.md).
+This repository is labeled research so that its existence is not mistaken for a
+product.
 
 ## Repository layout
 
@@ -94,13 +69,18 @@ See [`SECURITY.md`](SECURITY.md).
     └── ARCHITECTURE.md
 ```
 
+## Architecture note
+
+[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) records a candidate component
+breakdown and threat model. It is subordinate to the scope and decisions above
+and does not authorize implementation.
+
+## Security
+
+See [`SECURITY.md`](SECURITY.md) for the reporting policy and security
+boundaries. No implementation, test suite, or independent audit exists yet.
+
 ## License
 
 No open-source license is granted. See [`LICENSE`](LICENSE). The repository is
 public for review and development, not for reuse or redistribution.
-
-## Related repositories
-
-- [BTCS Mining Pool](https://github.com/Silver-Labs-Technology-Development/BTCS-Mining-Pool)
-- [BTCS Core](https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development)
-- [Silver Labs workspace](https://github.com/orgs/Silver-Labs-Technology-Development/repositories)
